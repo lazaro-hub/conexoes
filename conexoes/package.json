@@ -1,0 +1,24 @@
+{
+  "name": "conexoes-serious-game",
+  "version": "1.0.0",
+  "description": "CONEXÕES: serious game para aprendizagem de soft skills em estudantes de Enfermagem",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "typecheck": "tsc --noEmit",
+    "validar": "esbuild tests/validar-conteudo.ts --bundle --platform=node --log-level=warning | node",
+    "test": "npm run typecheck && npm run validar"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "esbuild": "^0.24.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.6.3"
+  },
+  "private": true
+}

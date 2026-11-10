@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Layout: app de uma coluna centralizada; cenário ilustrado no topo das missões, diálogo e decisões abaixo. */
+:root {
+  /* Cor (canais RGB para permitir opacidade no Tailwind) */
+  --bg: 236 242 241;
+  --surface: 255 255 255;
+  --surface-2: 226 235 233;
+  --ink: 16 40 44;
+  --ink-2: 72 98 102;
+  --line: 200 215 213;
+  --brand: 13 110 106;
+  --brand-ink: 255 255 255;
+  --brand-soft: 210 233 230;
+  --accent: 232 163 61;
+  --accent-ink: 51 33 5;
+  --e1: 20 128 126;
+  --e2: 58 88 168;
+  --e3: 168 104 14;
+  --e4: 160 58 110;
+  --ok: 38 128 76;
+  --mid: 40 118 160;
+  --low: 190 116 8;
+  --bad: 186 56 56;
+  --gold: 201 150 18;
+  --silver: 138 152 162;
+  --bronze: 176 108 52;
+  /* Cenários */
+  --sc-wall: 222 233 231;
+  --sc-wall2: 206 221 219;
+  --sc-floor: 190 204 201;
+  --sc-floor2: 172 188 185;
+  --sc-trim: 245 249 248;
+  --sc-furn: 168 190 194;
+  --sc-furn2: 120 146 152;
+  --sc-metal: 150 162 168;
+  --sc-glass: 196 226 240;
+  --sc-sky: 214 236 246;
+  --sc-paper: 252 252 250;
+  --sc-wood: 196 164 124;
+  --sc-warm: 240 226 206;
+  --sc-detail: 13 110 106;
+  /* Tipografia */
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: 12 26 28; --surface: 20 38 41; --surface-2: 27 50 54; --ink: 228 239 237; --ink-2: 156 180 179; --line: 46 70 72;
+    --brand: 70 192 180; --brand-ink: 4 30 32; --brand-soft: 22 64 64; --accent: 242 184 92; --accent-ink: 40 26 4;
+    --e1: 76 192 186; --e2: 132 160 236; --e3: 230 170 76; --e4: 226 126 178;
+    --ok: 96 198 136; --mid: 104 178 224; --low: 238 170 72; --bad: 238 116 116;
+    --gold: 232 192 74; --silver: 176 188 196; --bronze: 214 146 92;
+    --sc-wall: 34 54 58; --sc-wall2: 28 46 50; --sc-floor: 24 39 42; --sc-floor2: 19 32 35; --sc-trim: 50 74 78;
+    --sc-furn: 62 88 94; --sc-furn2: 46 68 74; --sc-metal: 86 102 108; --sc-glass: 38 72 88; --sc-sky: 32 60 80;
+    --sc-paper: 200 212 210; --sc-wood: 98 78 58; --sc-warm: 64 56 48; --sc-detail: 70 192 180;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: 12 26 28; --surface: 20 38 41; --surface-2: 27 50 54; --ink: 228 239 237; --ink-2: 156 180 179; --line: 46 70 72;
+  --brand: 70 192 180; --brand-ink: 4 30 32; --brand-soft: 22 64 64; --accent: 242 184 92; --accent-ink: 40 26 4;
+  --e1: 76 192 186; --e2: 132 160 236; --e3: 230 170 76; --e4: 226 126 178;
+  --ok: 96 198 136; --mid: 104 178 224; --low: 238 170 72; --bad: 238 116 116;
+  --gold: 232 192 74; --silver: 176 188 196; --bronze: 214 146 92;
+  --sc-wall: 34 54 58; --sc-wall2: 28 46 50; --sc-floor: 24 39 42; --sc-floor2: 19 32 35; --sc-trim: 50 74 78;
+  --sc-furn: 62 88 94; --sc-furn2: 46 68 74; --sc-metal: 86 102 108; --sc-glass: 38 72 88; --sc-sky: 32 60 80;
+  --sc-paper: 200 212 210; --sc-wood: 98 78 58; --sc-warm: 64 56 48; --sc-detail: 70 192 180;
+  color-scheme: dark;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: rgb(var(--bg));
+  color: rgb(var(--ink));
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+}
+h1, h2, h3, .font-display { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.01em; }
+.label { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+.tnum { font-variant-numeric: tabular-nums; }
+
+.gutter {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+
+:focus-visible { outline: 3px solid rgb(var(--accent)); outline-offset: 2px; border-radius: 6px; }
+
+/* Superfícies */
+.card { background: rgb(var(--surface)); border: 1px solid rgb(var(--line)); border-radius: 1rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  font-weight: 700; border-radius: .8rem; padding: .7rem 1.1rem; min-height: 44px;
+  transition: transform .12s ease, background-color .15s ease, box-shadow .15s ease, opacity .15s;
+}
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+.btn-primary { background: rgb(var(--brand)); color: rgb(var(--brand-ink)); box-shadow: 0 2px 0 rgb(var(--ink) / .18); }
+.btn-primary:hover:not(:disabled) { background: rgb(var(--brand) / .9); }
+.btn-ghost { background: transparent; color: rgb(var(--ink)); border: 1px solid rgb(var(--line)); }
+.btn-ghost:hover:not(:disabled) { background: rgb(var(--surface-2)); }
+.btn-accent { background: rgb(var(--accent)); color: rgb(var(--accent-ink)); box-shadow: 0 2px 0 rgb(var(--ink) / .2); }
+.btn-danger { background: rgb(var(--bad)); color: rgb(var(--surface)); }
+
+/* Cordão do crachá */
+.lanyard { background: repeating-linear-gradient(90deg, rgb(var(--accent)) 0 10px, rgb(var(--accent) / .7) 10px 20px); }
+
+/* Animações */
+@keyframes sobe { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes surge { from { opacity: .0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes pulso { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes brilho { from { transform: translateY(-6px); opacity: 0; } 20% { opacity: 1; transform: none; } 80% { opacity: 1; } to { opacity: 0; transform: translateY(-14px); } }
+@keyframes respira { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+.anim-sobe { animation: sobe .35s ease both; }
+.anim-surge { animation: surge .3s ease both; }
+.anim-pulso { animation: pulso .6s ease 1; }
+.anim-brilho { animation: brilho 1.6s ease both; }
+.anim-respira { animation: respira 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+}
+
+/* Personagens no cenário */
+.ator { transition: opacity .3s ease, filter .3s ease, transform .3s ease; transform-origin: bottom center; }
+.ator[data-falando="false"] { opacity: .62; filter: saturate(.55) brightness(.92); transform: scale(.94); }
+.ator[data-falando="true"] { opacity: 1; filter: none; transform: scale(1); }
+
+.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
